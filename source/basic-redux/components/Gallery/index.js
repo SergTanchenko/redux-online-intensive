@@ -1,28 +1,64 @@
 // Core
-import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
-import photo1 from '../../../theme/assets/photos/1.jpeg';
+import React, { Component } from "react";
+import { hot } from "react-hot-loader";
+import cx from "classnames";
 
 // Instruments
-import Styles from './styles.m.css';
+import Styles from "./styles.m.css";
+
+// Store
+import { store } from "../../init/store";
+
+// Action
+import { showNextPhoto } from "../../bus/gallery/actions";
 
 @hot(module)
 export default class Gallery extends Component {
+    _showNextPhoto = () => {
+        store.dispatch(showNextPhoto);
+        this.forceUpdate();
+    };
+
     render () {
-        const url = photo1;
+        const {
+            gallery: { photos, selectedPhotoIndex },
+        } = store.getState();
+
+        const selectedPhoto = photos.find(
+            (_, index) => index === selectedPhotoIndex
+        );
+
+        const buttonStyle1 = cx({
+            [Styles.buttonActive]: selectedPhotoIndex === 0,
+        });
+        const buttonStyle2 = cx({
+            [Styles.buttonActive]: selectedPhotoIndex === 1,
+        });
+        const buttonStyle3 = cx({
+            [Styles.buttonActive]: selectedPhotoIndex === 2,
+        });
+        const buttonStyle4 = cx({
+            [Styles.buttonActive]: selectedPhotoIndex === 3,
+        });
 
         return (
             <section className = { Styles.gallery }>
-                <img src = { url } />
+                <img src = { selectedPhoto.url } />
                 <div>
                     <button>←</button>
-                    <button className = { Styles.buttonActive } value = '0'>
+                    <button className = { buttonStyle1 } value = '0'>
                         1
                     </button>
-                    <button value = '1'>2</button>
-                    <button value = '2'>3</button>
-                    <button value = '3'>4</button>
-                    <button>→</button>
+                    <button className = { buttonStyle2 } value = '1'>
+                        2
+                    </button>
+                    <button className = { buttonStyle3 } value = '2'>
+                        3
+                    </button>
+                    <button className = { buttonStyle4 } value = '3'>
+                        4
+                    </button>
+                    <button onClick = { this._showNextPhoto }>→</button>
                 </div>
             </section>
         );
