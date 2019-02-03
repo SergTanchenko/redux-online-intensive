@@ -10,7 +10,7 @@ import { mockedProfile } from "../../instruments/mockedData";
 import { Composer, Catcher, Post } from "../../components";
 import { connect } from "react-redux";
 
-import { fetchPostsAsync } from "../../bus/posts/actions";
+import { fetchPostsAsync, createPostAsync } from "../../bus/posts/actions";
 import { bindActionCreators } from "redux";
 
 const mapStateToProps = (state) => {
@@ -21,7 +21,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({ fetchPostsAsync }, dispatch),
+        actions: bindActionCreators(
+            { fetchPostsAsync, createPostAsync },
+            dispatch
+        ),
     };
 };
 
