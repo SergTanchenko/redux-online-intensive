@@ -1,6 +1,5 @@
 // Core
 import { createStore } from "redux";
-import thunk from "redux-thunk";
 
 // Reducer
 import { rootReducer } from "./rootReducer";
