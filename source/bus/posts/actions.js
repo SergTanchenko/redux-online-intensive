@@ -1,4 +1,9 @@
-import { FILL_POSTS, FETCH_POSTS_ASYNC, CREATE_POST_ASYNC } from "./types";
+import {
+    FILL_POSTS,
+    FETCH_POSTS_ASYNC,
+    CREATE_POST,
+    CREATE_POST_ASYNC
+} from "./types";
 import { api } from "../../REST/api";
 
 export const fillPosts = (posts) => {
@@ -19,14 +24,16 @@ export const fetchPostsAsync = () => async (dispatch) => {
     dispatch(fillPosts(result.data));
 };
 
-export const createPostAsync = (comment) => async (dispatch) => {
-    dispatch({
-        type: CREATE_POST_ASYNC,
-    });
+export const createPost = (post) => {
+    return {
+        type:    CREATE_POST,
+        payload: post,
+    };
+};
 
-    const response = await api.posts.create(comment);
-
-    if (response.status === 200) {
-        dispatch(fetchPostsAsync());
-    }
+export const createPostAsync = (comment) => {
+    return {
+        type:    CREATE_POST_ASYNC,
+        payload: comment,
+    };
 };
