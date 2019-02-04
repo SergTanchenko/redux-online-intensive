@@ -18,7 +18,7 @@ export function* createPost ({ payload: comment }) {
 
         yield put(postActions.createPost(post));
     } catch (error) {
-        console.log(" -> createPost worker", error);
+        yield put(uiActions.emitError(error, "createPost worker"));
     } finally {
         yield put(uiActions.stopFetching());
     }
