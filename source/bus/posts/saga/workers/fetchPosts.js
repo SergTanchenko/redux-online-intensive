@@ -10,13 +10,13 @@ export function* fetchPosts () {
         yield put(uiActions.startFetching());
 
         const response = yield apply(api, api.posts.fetch);
-        const { data: post, message } = yield apply(response, response.json);
+        const { data: posts, message } = yield apply(response, response.json);
 
         if (response.status !== 200) {
             throw new Error(message);
         }
 
-        yield put(postActions.fillPosts(post));
+        yield put(postActions.fillPosts(posts));
     } catch (error) {
         yield put(uiActions.emitError(error, "fetchPosts watcher"));
     } finally {
