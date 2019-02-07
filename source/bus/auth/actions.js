@@ -7,6 +7,12 @@ export const authActions = {
             payload: userData,
         };
     },
+    login: (credentials) => {
+        return {
+            type:    types.LOGIN,
+            payload: credentials,
+        };
+    },
     authenticate: () => {
         return {
             type: types.AUTHENTICATE,
