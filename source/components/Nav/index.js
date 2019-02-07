@@ -7,11 +7,11 @@ import cx from "classnames";
 // Instruments
 import Styles from "./styles.m.css";
 import { book } from "../../navigation/book";
-import { mockedProfile } from "../../instruments/mockedData";
 
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.get("isAuthenticated"),
+        profile:         state.profile,
     };
 };
 
@@ -19,7 +19,6 @@ const mapStateToProps = (state) => {
 export default class Nav extends Component {
     static defaultProps = {
         // State
-        profile:  mockedProfile,
         isOnline: false,
 
         // Actions
@@ -73,7 +72,7 @@ export default class Nav extends Component {
         return (
             <section className = { Styles.navigation }>
                 <div className = { statusStyle }>
-                    <div>{isOnline ? "Онлайн" : "Офлайн"}</div>
+                    <div>{isOnline ? "Online" : "Offline"}</div>
                     <span />
                 </div>
                 {navigation}

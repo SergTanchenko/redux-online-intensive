@@ -5,6 +5,7 @@ import { api } from "../../../../REST/api";
 
 import { uiActions } from "../../../ui/actions";
 import { authActions } from "../../../auth/actions";
+import { profileActions } from "../../../profile/actions";
 
 export function* signupWorker ({ payload: userInfo }) {
     try {
@@ -17,8 +18,7 @@ export function* signupWorker ({ payload: userInfo }) {
             throw new Error(message);
         }
 
-        console.log("signupWorker -> profile: ", profile);
-
+        yield put(profileActions.fillProfile(profile));
         yield put(authActions.authenticate());
     } catch (error) {
         console.log(error);

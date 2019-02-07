@@ -15,7 +15,8 @@ import { bindActionCreators } from "redux";
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
+        posts:   state.posts,
+        profile: state.profile,
     };
 };
 
@@ -37,8 +38,6 @@ const mapDispatchToProps = (dispatch) => {
 )
 export default class Posts extends Component {
     static defaultProps = {
-        profile: mockedProfile,
-
         // Actions
         actions: {
             // Users
