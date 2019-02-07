@@ -1,5 +1,4 @@
 import { types } from "./types";
-import { initialFieldState } from "react-redux-form";
 
 const initialState = {};
 

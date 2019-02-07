@@ -1,0 +1,1 @@
+export { signupWorker } from "./signupWorker";

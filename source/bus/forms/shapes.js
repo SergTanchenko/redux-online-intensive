@@ -1,10 +1,11 @@
 // Core
-import { object, string, boolean } from 'yup';
+import { object, string, boolean } from "yup";
+import { invite } from "../../REST/config";
 
 export const login = {
     shape: {
-        email:    '',
-        password: '',
+        email:    "",
+        password: "",
         remember: false,
     },
     schema: object().shape({
@@ -20,11 +21,11 @@ export const login = {
 
 export const signup = {
     shape: {
-        firstName: '',
-        lastName:  '',
-        email:     '',
-        password:  '',
-        invite:    '',
+        firstName: "Serhii",
+        lastName:  "Tanchenko",
+        email:     "serg.tanchenko@gmail.com",
+        password:  "qqq111222",
+        invite,
     },
     schema: object().shape({
         firstName: string().required(),
@@ -44,8 +45,8 @@ export const signup = {
 
 export const newPassword = {
     shape: {
-        oldPassword: '',
-        newPassword: '',
+        oldPassword: "",
+        newPassword: "",
     },
     schema: object().shape({
         oldPassword: string()
@@ -59,7 +60,7 @@ export const newPassword = {
 
 export const composer = {
     shape: {
-        comment: '',
+        comment: "",
     },
     schema: object().shape({
         comment: string()
