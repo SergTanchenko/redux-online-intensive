@@ -1,1 +1,3 @@
-export { signupWorker } from "./signupWorker";
+export { authenticate } from "./authenticate";
+export { login } from "./login";
+export { signup } from "./signup";

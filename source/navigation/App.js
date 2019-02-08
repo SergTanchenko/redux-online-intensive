@@ -4,24 +4,40 @@ import { connect } from "react-redux";
 import { hot } from "react-hot-loader";
 import { withRouter } from "react-router-dom";
 
-// Pages
-import { Login, Signup, Feed, Profile, NewPassword } from "../pages";
-import { book } from "./book";
 import Private from "./Private";
 import Public from "./Public";
+import Loading from "../components/Loading";
+
+import { authActions } from "../bus/auth/actions";
 
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.get("isAuthenticated"),
+        isInitialized:   state.auth.get("isInitialized"),
     };
+};
+
+const mapDispatchToProps = {
+    initializeAsync: authActions.initializeAsync,
 };
 
 @hot(module)
 @withRouter
-@connect(mapStateToProps)
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 export default class App extends Component {
+    componentDidMount = () => {
+        this.props.initializeAsync();
+    };
+
     render () {
-        const { isAuthenticated } = this.props;
+        const { isAuthenticated, isInitialized } = this.props;
+
+        if (!isInitialized) {
+            return <Loading />;
+        }
 
         return isAuthenticated ? <Private /> : <Public />;
     }

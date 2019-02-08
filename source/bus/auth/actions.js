@@ -13,9 +13,24 @@ export const authActions = {
             payload: credentials,
         };
     },
+    authenticateAsync: () => {
+        return {
+            type: types.AUTHENTICATE_ASYNC,
+        };
+    },
     authenticate: () => {
         return {
             type: types.AUTHENTICATE,
+        };
+    },
+    initialize: () => {
+        return {
+            type: types.INITIALIZE,
+        };
+    },
+    initializeAsync: () => {
+        return {
+            type: types.INITIALIZE_ASYNC,
         };
     },
 };
