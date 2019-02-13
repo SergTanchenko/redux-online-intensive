@@ -19,6 +19,12 @@ export const postActions = {
             payload: post,
         };
     },
+    removePost: (postId) => {
+        return {
+            type:    types.REMOVE_POST,
+            payload: postId,
+        };
+    },
 
     //Async
     fetchPostsAsync: () => {
@@ -30,6 +36,12 @@ export const postActions = {
         return {
             type:    types.CREATE_POST_ASYNC,
             payload: comment,
+        };
+    },
+    removePostAsync: (postId) => {
+        return {
+            type:    types.REMOVE_POST_ASYNC,
+            payload: postId,
         };
     },
 };

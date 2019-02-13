@@ -4,7 +4,6 @@ import FlipMove from "react-flip-move";
 
 // Instruments
 import Styles from "./styles.m.css";
-import { mockedProfile } from "../../instruments/mockedData";
 
 // Components
 import { Composer, Catcher, Post } from "../../components";
@@ -26,6 +25,7 @@ const mapDispatchToProps = (dispatch) => {
             {
                 fetchPostsAsync: postActions.fetchPostsAsync,
                 createPostAsync: postActions.createPostAsync,
+                removePostAsync: postActions.removePostAsync,
             },
             dispatch
         ),
@@ -44,9 +44,6 @@ export default class Posts extends Component {
             fetchUsersAsync: () => {},
 
             // Posts
-            fetchPostsAsync: () => {},
-            removePostAsync: () => {},
-            createPostAsync: () => {},
             likePostAsync:   () => {},
             unlikePostAsync: () => {},
         },
