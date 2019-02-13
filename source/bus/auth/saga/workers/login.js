@@ -17,6 +17,10 @@ export function* login ({ payload: credentials }) {
             throw new Error(message);
         }
 
+        if (credentials.remember) {
+            yield apply(localStorage, localStorage.setItem, ["remember", true]);
+        }
+
         yield apply(localStorage, localStorage.setItem, [
             "token",
             profile.token
