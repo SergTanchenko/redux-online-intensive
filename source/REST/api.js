@@ -2,7 +2,7 @@ import { MAIN_URL, groupId } from "./config";
 
 export const api = {
     get token () {
-        localStorage.getItem("token");
+        return localStorage.getItem("token");
     },
     auth: {
         login (credentials) {

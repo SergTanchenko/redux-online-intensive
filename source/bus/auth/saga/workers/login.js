@@ -17,10 +17,9 @@ export function* login ({ payload: credentials }) {
             throw new Error(message);
         }
 
-        yield apply(localStorage, localStorage.setItem, [
-            "token",
-            profile.token
-        ]);
+        if (credentials.remember) {
+            yield apply(localStorage, localStorage.setItem, ["remember", true]);
+        }
 
         yield put(profileActions.fillProfile(profile));
         yield put(authActions.authenticate());

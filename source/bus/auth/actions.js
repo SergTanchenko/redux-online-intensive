@@ -1,23 +1,7 @@
 import { types } from "./types";
 
 export const authActions = {
-    signupAsync: (userData) => {
-        return {
-            type:    types.SIGNUP_ASYNC,
-            payload: userData,
-        };
-    },
-    login: (credentials) => {
-        return {
-            type:    types.LOGIN,
-            payload: credentials,
-        };
-    },
-    authenticateAsync: () => {
-        return {
-            type: types.AUTHENTICATE_ASYNC,
-        };
-    },
+    //Sync
     authenticate: () => {
         return {
             type: types.AUTHENTICATE,
@@ -26,6 +10,25 @@ export const authActions = {
     initialize: () => {
         return {
             type: types.INITIALIZE,
+        };
+    },
+
+    //Async
+    signupAsync: (userData) => {
+        return {
+            type:    types.SIGNUP_ASYNC,
+            payload: userData,
+        };
+    },
+    loginAsync: (credentials) => {
+        return {
+            type:    types.LOGIN_ASYNC,
+            payload: credentials,
+        };
+    },
+    authenticateAsync: () => {
+        return {
+            type: types.AUTHENTICATE_ASYNC,
         };
     },
     initializeAsync: () => {

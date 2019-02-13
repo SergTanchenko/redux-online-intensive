@@ -10,7 +10,7 @@ export function* watchSignup () {
 }
 
 export function* watchLogin () {
-    yield takeEvery(types.LOGIN, login);
+    yield takeEvery(types.LOGIN_ASYNC, login);
 }
 
 export function* watchAuthenticate () {

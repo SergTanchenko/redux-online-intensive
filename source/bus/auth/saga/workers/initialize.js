@@ -8,6 +8,6 @@ export function* initialize () {
     if (token) {
         yield put(authActions.authenticateAsync());
     } else {
-        yield put(authActions.initializeAsync());
+        yield put(authActions.initialize());
     }
 }

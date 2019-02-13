@@ -3,6 +3,7 @@ import { Map } from "immutable";
 
 const initialState = Map({
     isAuthenticated: false,
+    isInitialized:   false,
 });
 
 export const authReducer = (state = initialState, action) => {
