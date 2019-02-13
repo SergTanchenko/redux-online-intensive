@@ -4,6 +4,8 @@ import { api } from "../../../../REST/api";
 
 import { uiActions } from "../../../ui/actions";
 import { authActions } from "../../actions";
+import { postActions } from "../../../posts/actions";
+import { profileActions } from "../../../profile/actions";
 
 export function* logout () {
     try {
@@ -19,6 +21,10 @@ export function* logout () {
     } catch (error) {
         yield put(uiActions.emitError(error, "logout worker"));
     } finally {
+        yield apply(localStorage, localStorage.removeItem, ["token"]);
+        yield apply(localStorage, localStorage.removeItem, ["remember"]);
+        yield put(postActions.clearPosts());
+        yield put(profileActions.clearProfile());
         yield put(uiActions.stopFetching());
         yield put(authActions.logout());
     }
