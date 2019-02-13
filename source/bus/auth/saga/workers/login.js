@@ -28,7 +28,6 @@ export function* login ({ payload: credentials }) {
         yield put(profileActions.fillProfile(profile));
         yield put(authActions.authenticate());
     } catch (error) {
-        console.log(error);
         yield put(uiActions.emitError(error, "login worker"));
     } finally {
         yield put(uiActions.stopFetching());

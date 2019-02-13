@@ -14,6 +14,14 @@ export const api = {
                 body: JSON.stringify(credentials),
             });
         },
+        logout () {
+            return fetch(`${MAIN_URL}/user/logout`, {
+                method:  "GET",
+                headers: {
+                    Authorization: this.token,
+                },
+            });
+        },
         authenticate () {
             return fetch(`${MAIN_URL}/user/login`, {
                 method:  "POST",
@@ -38,7 +46,7 @@ export const api = {
             return fetch(`${MAIN_URL}/feed`, {
                 method:  "GET",
                 headers: {
-                    "x-no-auth": groupId,
+                    Authorization: this.token,
                 },
             });
         },
