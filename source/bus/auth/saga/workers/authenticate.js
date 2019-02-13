@@ -34,7 +34,6 @@ export function* authenticate () {
         yield put(profileActions.fillProfile(profile));
         yield put(authActions.authenticate());
     } catch (error) {
-        console.log(error);
         yield put(uiActions.emitError(error, "authenticate worker"));
     } finally {
         yield put(uiActions.stopFetching());

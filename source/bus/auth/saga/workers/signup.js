@@ -20,7 +20,6 @@ export function* signup ({ payload: userInfo }) {
         yield put(profileActions.fillProfile(profile));
         yield put(authActions.authenticate());
     } catch (error) {
-        console.log(error);
         yield put(uiActions.emitError(error, "signup worker"));
     } finally {
         yield put(uiActions.stopFetching());
