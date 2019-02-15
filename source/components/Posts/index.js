@@ -26,6 +26,8 @@ const mapDispatchToProps = (dispatch) => {
                 fetchPostsAsync: postActions.fetchPostsAsync,
                 createPostAsync: postActions.createPostAsync,
                 removePostAsync: postActions.removePostAsync,
+                likePostAsync:   postActions.likePostAsync,
+                unlikePostAsync: postActions.likePostAsync,
             },
             dispatch
         ),
@@ -42,10 +44,6 @@ export default class Posts extends Component {
         actions: {
             // Users
             fetchUsersAsync: () => {},
-
-            // Posts
-            likePostAsync:   () => {},
-            unlikePostAsync: () => {},
         },
     };
 
