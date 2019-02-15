@@ -3,6 +3,10 @@ import { fromJS, List } from "immutable";
 
 const initialState = List();
 
+const postIdEqualsTo = (postId) => {
+    return (post) => post.get("id") === postId;
+};
+
 export const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.FILL_POSTS:
@@ -16,12 +20,18 @@ export const postsReducer = (state = initialState, action) => {
         case types.LIKE_POST:
             return state.updateIn(
                 [
-                    state.findIndex(
-                        (post) => post.get("id") === action.payload.postId
-                    ),
+                    state.findIndex(postIdEqualsTo(action.payload.postId)),
                     "likes"
                 ],
                 (likes) => likes.unshift(action.payload.liker)
+            );
+        case types.UNLIKE_POST:
+            return state.updateIn(
+                [
+                    state.findIndex(postIdEqualsTo(action.payload.postId)),
+                    "likes"
+                ],
+                (likes) => likes.shift()
             );
 
         default:
