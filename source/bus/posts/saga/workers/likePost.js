@@ -1,4 +1,4 @@
-import { put, apply } from "redux-saga/effects";
+import { put, apply, select } from "redux-saga/effects";
 
 import { api } from "../../../../REST/api";
 
@@ -17,7 +17,11 @@ export function* likePost ({ payload: id }) {
             throw new Error(message);
         }
 
-        yield put(postActions.likePost(id));
+        const liker = yield select((state) => {
+            return state.profile.removeAll(["avatar", "token", "groupId"]);
+        });
+
+        yield put(postActions.likePost(liker, id));
     } catch (error) {
         yield put(uiActions.emitError(error, "likePost worker"));
     } finally {

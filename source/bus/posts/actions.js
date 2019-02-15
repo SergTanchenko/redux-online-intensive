@@ -25,10 +25,10 @@ export const postActions = {
             payload: postId,
         };
     },
-    likePost: (postId) => {
+    likePost: (liker, postId) => {
         return {
             type:    types.LIKE_POST,
-            payload: postId,
+            payload: { liker, postId },
         };
     },
 
