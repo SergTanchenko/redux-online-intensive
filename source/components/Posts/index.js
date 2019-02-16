@@ -10,6 +10,7 @@ import { Composer, Catcher, Post } from "../../components";
 import { connect } from "react-redux";
 
 import { postActions } from "../../bus/posts/actions";
+import { usersActions } from "../../bus/users/actions";
 import { bindActionCreators } from "redux";
 
 const mapStateToProps = (state) => {
@@ -22,13 +23,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(
-            {
-                fetchPostsAsync: postActions.fetchPostsAsync,
-                createPostAsync: postActions.createPostAsync,
-                removePostAsync: postActions.removePostAsync,
-                likePostAsync:   postActions.likePostAsync,
-                unlikePostAsync: postActions.unlikePostAsync,
-            },
+            { ...postActions, ...usersActions },
             dispatch
         ),
     };
@@ -39,18 +34,11 @@ const mapDispatchToProps = (dispatch) => {
     mapDispatchToProps
 )
 export default class Posts extends Component {
-    static defaultProps = {
-        // Actions
-        actions: {
-            // Users
-            fetchUsersAsync: () => {},
-        },
-    };
-
     componentDidMount () {
         const { actions } = this.props;
 
         actions.fetchPostsAsync();
+        actions.fetchUsersAsync();
     }
 
     render () {

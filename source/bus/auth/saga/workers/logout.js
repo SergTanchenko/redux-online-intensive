@@ -6,6 +6,7 @@ import { uiActions } from "../../../ui/actions";
 import { authActions } from "../../actions";
 import { postActions } from "../../../posts/actions";
 import { profileActions } from "../../../profile/actions";
+import { usersActions } from "../../../users/actions";
 import { book } from "../../../../navigation/book";
 
 export function* logout () {
@@ -27,6 +28,7 @@ export function* logout () {
         yield put(postActions.clearPosts());
         yield put(profileActions.clearProfile());
         yield put(uiActions.stopFetching());
+        yield put(usersActions.clearUsers());
         yield put(authActions.logout());
         yield put(replace(book.login));
     }
