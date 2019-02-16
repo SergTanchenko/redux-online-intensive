@@ -5,6 +5,7 @@ import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
 
 import createSagaMiddleware from "redux-saga";
 import { createLogger } from "redux-logger";
+import { customThunk } from "./custom";
 
 const logger = createLogger({
     duration:  true,
@@ -25,7 +26,7 @@ const history = createBrowserHistory();
 const routerMiddleware = createRouterMiddleware(history);
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware, routerMiddleware];
+const middleware = [sagaMiddleware, routerMiddleware, customThunk];
 
 if (__DEV__) {
     middleware.push(logger);

@@ -19,4 +19,14 @@ export const uiActions = {
             meta,
         };
     },
+    setOnlineState: () => {
+        return {
+            type: types.SET_ONLINE_STATE,
+        };
+    },
+    setOfflineState: () => {
+        return {
+            type: types.SET_OFFLINE_STATE,
+        };
+    },
 };
