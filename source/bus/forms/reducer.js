@@ -2,7 +2,7 @@ import { combineForms } from "react-redux-form";
 
 export const formsReducer = combineForms(
     {
-        users: {
+        user: {
             profile: {
                 firstName: "",
                 lastName:  "",
