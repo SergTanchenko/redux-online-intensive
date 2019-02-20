@@ -101,5 +101,14 @@ export const api = {
                 body: JSON.stringify(profileInfo),
             });
         },
+        updateAvatar (avatar) {
+            return fetch(`${MAIN_URL}/image`, {
+                method:  "POST",
+                headers: {
+                    Authorization: this.token,
+                },
+                body: avatar,
+            });
+        },
     },
 };
