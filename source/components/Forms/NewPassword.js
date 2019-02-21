@@ -1,23 +1,29 @@
 // Core
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Form, Field } from 'formik';
-import cx from 'classnames';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
+import cx from "classnames";
 
 // Instruments
-import Styles from './styles.m.css';
-import { newPassword } from '../../bus/forms/shapes';
-import { book } from '../../navigation/book';
+import Styles from "./styles.m.css";
+import { newPassword } from "../../bus/forms/shapes";
+import { book } from "../../navigation/book";
+import { profileActions } from "../../bus/profile/actions";
 
-export default class NewPassword extends Component {
-    static defaultProps = {
-        // State
-        isFetching: false,
-
-        // Actions
-        updatePasswordAsync: () => {},
+const mapStateToProps = (state) => {
+    return {
+        isFetching: state.ui.get("isFetching"),
     };
+};
 
+const mapDispatchToProps = profileActions;
+
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
+export default class NewPassword extends Component {
     _submitPassword = (passwordData) => {
         const { updatePasswordAsync } = this.props;
 
@@ -46,7 +52,7 @@ export default class NewPassword extends Component {
                     const buttonStyle = cx(Styles.loginSubmit, {
                         [Styles.disabledButton]: isFetching,
                     });
-                    const buttonMessage = isFetching ? 'Загрузка...' : 'Сменить пароль';
+                    const buttonMessage = isFetching ? 'Loading...' : 'Change password';
 
                     return (
                         <Form className = { Styles.form }>
@@ -56,14 +62,14 @@ export default class NewPassword extends Component {
                                         className = { oldPasswordStyle }
                                         disabled = { isFetching }
                                         name = 'oldPassword'
-                                        placeholder = 'Старый пароль'
+                                        placeholder = 'Old password'
                                         type = 'password'
                                     />
                                     <Field
                                         className = { newPasswordStyle }
                                         disabled = { isFetching }
                                         name = 'newPassword'
-                                        placeholder = 'Новый пароль'
+                                        placeholder = 'New password'
                                         type = 'password'
                                     />
                                     <button
@@ -74,7 +80,7 @@ export default class NewPassword extends Component {
                                         {buttonMessage}
                                     </button>
                                 </div>
-                                <Link to = { book.profile }>← назад</Link>
+                                <Link to = { book.profile }>← back</Link>
                             </div>
                         </Form>
                     );
