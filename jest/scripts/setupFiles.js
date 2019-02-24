@@ -1,23 +1,38 @@
 // Mocks
-import { LocalStorage } from './mocks/localStorage';
-import { fetch } from './mocks/fetch';
+import { LocalStorage } from "./mocks/localStorage";
+import { fetch } from "./mocks/fetch";
 
-const successMesasge = 'TEST_SUCCESS_MESSAGE.';
-const errorMessage = 'TEST_ERROR_MESSAGE.';
-const token = 'TEST_TOKEN';
+const successMesasge = "TEST_SUCCESS_MESSAGE.";
+const errorMessage = "TEST_ERROR_MESSAGE.";
+const token = "TEST_TOKEN";
 const error = new Error(errorMessage);
 
 const userProfile = {
-    id:        'TEST_ID',
-    avatar:    'TEST_AVATAR',
-    firstName: 'Walter',
-    lastName:  'White',
+    id:        "TEST_ID",
+    avatar:    "TEST_AVATAR",
+    firstName: "Walter",
+    lastName:  "White",
     token,
 };
 
+const users = [
+    {
+        id:        "111",
+        firstName: "Vincenzo",
+        lastName:  "Smith",
+        avatar:    "some.jpg",
+    },
+    {
+        id:        "222",
+        firstName: "Danika",
+        lastName:  "Volkman",
+        avatar:    "some.jpg",
+    }
+];
+
 const credentials = {
-    email:    'test@email.com',
-    password: '1111',
+    email:    "test@email.com",
+    password: "1111",
     remember: true,
 };
 
@@ -45,10 +60,11 @@ const fetchResponseFail400 = {
     json:   jest.fn(() => Promise.resolve(responseDataFail)),
 };
 
-const url = 'https://www.url.com';
+const url = "https://www.url.com";
 
 global.__ = {
     userProfile,
+    users,
     errorMessage,
     token,
     error,
