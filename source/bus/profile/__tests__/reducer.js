@@ -1,5 +1,3 @@
-import { fromJS, List } from "immutable";
-
 import { profileReducer } from "./../reducer";
 import { profileActions } from "./../actions";
 
