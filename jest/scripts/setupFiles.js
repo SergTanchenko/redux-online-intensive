@@ -2,10 +2,14 @@
 import { LocalStorage } from "./mocks/localStorage";
 import { fetch } from "./mocks/fetch";
 
-const successMesasge = "TEST_SUCCESS_MESSAGE.";
+const successMessage = "TEST_SUCCESS_MESSAGE.";
 const errorMessage = "TEST_ERROR_MESSAGE.";
 const token = "TEST_TOKEN";
 const error = new Error(errorMessage);
+
+const meta = {
+    prop1: "value1",
+};
 
 const newName = {
     firstName: "Jimmy",
@@ -49,7 +53,7 @@ const credentials = {
 
 const responseDataSuccess = {
     data:    userProfile,
-    message: successMesasge,
+    message: successMessage,
 };
 
 const responseDataFail = {
@@ -79,6 +83,7 @@ global.__ = {
     errorMessage,
     token,
     error,
+    meta,
     responseDataSuccess,
     responseDataFail,
     fetchResponseSuccess,
