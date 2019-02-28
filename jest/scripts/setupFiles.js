@@ -7,6 +7,17 @@ const errorMessage = "TEST_ERROR_MESSAGE.";
 const token = "TEST_TOKEN";
 const error = new Error(errorMessage);
 
+const newName = {
+    firstName: "Jimmy",
+    lastName:  "Garry",
+};
+
+const newAvatar = ["avatar"];
+const newPassword = {
+    oldPassword: 12345,
+    newPassword: 123456,
+};
+
 const userProfile = {
     id:        "TEST_ID",
     avatar:    "TEST_AVATAR",
