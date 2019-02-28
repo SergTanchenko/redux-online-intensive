@@ -12,7 +12,7 @@ describe("profile actions: ", () => {
         expect(profileActions.updateAvatar(__.url)).toMatchSnapshot();
     });
     test("updateNameAsync", () => {
-        expect(profileActions.updateNameAsync("NEW_NAME")).toMatchSnapshot();
+        expect(profileActions.updateNameAsync(__.newName)).toMatchSnapshot();
     });
     test("updateAvatarAsync", () => {
         expect(

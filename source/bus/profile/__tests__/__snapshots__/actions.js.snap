@@ -28,21 +28,29 @@ Object {
 
 exports[`profile actions:  updateAvatarAsync 1`] = `
 Object {
-  "payload": undefined,
+  "payload": Array [
+    "avatar",
+  ],
   "type": "UPDATE_AVATAR_ASYNC",
 }
 `;
 
 exports[`profile actions:  updateNameAsync 1`] = `
 Object {
-  "payload": "NEW_NAME",
+  "payload": Object {
+    "firstName": "Jimmy",
+    "lastName": "Garry",
+  },
   "type": "UPDATE_NAME_ASYNC",
 }
 `;
 
 exports[`profile actions:  updatePasswordAsync 1`] = `
 Object {
-  "payload": undefined,
+  "payload": Object {
+    "newPassword": 123456,
+    "oldPassword": 12345,
+  },
   "type": "UPDATE_PASSWORD_ASYNC",
 }
 `;
