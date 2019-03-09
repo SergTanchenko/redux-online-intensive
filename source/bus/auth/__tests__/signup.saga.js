@@ -13,7 +13,7 @@ const signupAction = authActions.signupAsync(__.userProfile);
 const saga = cloneableGenerator(signup)(signupAction);
 let clone = null;
 
-describe("saga generator: ", () => {
+describe("signup saga: ", () => {
     describe("should pass until response received: ", () => {
         test("should dispatch 'startFetching' action", () => {
             expect(saga.next().value).toEqual(put(uiActions.startFetching()));
