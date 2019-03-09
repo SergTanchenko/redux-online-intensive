@@ -10,7 +10,7 @@ import { authActions } from "../../auth/actions";
 import { profileActions } from "../../profile/actions";
 
 describe("authenticate saga: ", () => {
-    test("should handle a 200 status response: ", async () => {
+    test("should complete a 200 status response scenario: ", async () => {
         await expectSaga(authenticate)
             .put(uiActions.startFetching())
             .provide([
@@ -30,6 +30,21 @@ describe("authenticate saga: ", () => {
                 )
             )
             .put(authActions.authenticate())
+            .put(uiActions.stopFetching())
+            .put(authActions.initialize())
+            .run();
+    });
+
+    test("should complete a 401 status response scenario: ", async () => {
+        await expectSaga(authenticate)
+            .put(uiActions.startFetching())
+            .provide([
+                [apply(api, api.auth.authenticate), __.fetchResponseFail401]
+            ])
+            .apply(localStorage, localStorage.removeItem, ["token"])
+            .apply(localStorage, localStorage.removeItem, ["remember"])
+            .returns(null)
+
             .put(uiActions.stopFetching())
             .put(authActions.initialize())
             .run();
