@@ -66,7 +66,7 @@ const fetchResponseSuccess = {
 };
 
 const fetchResponseSuccess204 = {
-    status: 200,
+    status: 204,
 };
 
 const fetchResponseFail401 = {
